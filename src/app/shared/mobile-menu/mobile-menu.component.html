@@ -1,0 +1,104 @@
+<div class="relative z-50 lg:hidden" role="dialog" aria-modal="true">
+  <!--
+    Off-canvas menu backdrop, show/hide based on off-canvas menu state.
+
+    Entering: "transition-opacity ease-linear duration-300"
+      From: "opacity-0"
+      To: "opacity-100"
+    Leaving: "transition-opacity ease-linear duration-300"
+      From: "opacity-100"
+      To: "opacity-0"
+  -->
+  <div class="fixed inset-0 bg-gray-900/80" aria-hidden="true"></div>
+
+  <div class="fixed inset-0 flex">
+    <!--
+      Off-canvas menu, show/hide based on off-canvas menu state.
+
+      Entering: "transition ease-in-out duration-300 transform"
+        From: "-translate-x-full"
+        To: "translate-x-0"
+      Leaving: "transition ease-in-out duration-300 transform"
+        From: "translate-x-0"
+        To: "-translate-x-full"
+    -->
+    <div class="relative mr-16 flex w-full max-w-xs flex-1">
+      <!--
+        Close button, show/hide based on off-canvas menu state.
+
+        Entering: "ease-in-out duration-300"
+          From: "opacity-0"
+          To: "opacity-100"
+        Leaving: "ease-in-out duration-300"
+          From: "opacity-100"
+          To: "opacity-0"
+      -->
+      <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
+        <button (click)="goAway()" type="button" class="-m-2.5 p-2.5">
+          <span class="sr-only">Close sidebar</span>
+          <svg class="size-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Sidebar component, swap this element with another sidebar if you like -->
+      <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white  py-5">
+        <div class="px-5">
+          <div class="flex h-16 shrink-0 mb-7 items-center justify-center">
+            <img class="h-12 object-contain w-20" src="assets/images/logo-black.png" alt="Your Company">
+          </div>
+          <div class="profile-wrapper  grid grid-cols-3 mb-10">
+            <div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" class="rounded-2xl w-14 h-14 object-cover" alt="">
+            </div>
+            <div class="text-center col-span-2">
+                <p class="font-normal text-xs text-[#171717] mb-2">{{currentUser?.fullName}}</p>
+                <button [routerLink]="['/dashboard/my-profile']" class="btn-dark">Ver perfil</button>
+            </div>
+          </div>
+        </div>
+        <nav class="flex flex-1 flex-col pl-5 ">
+          <ul role="list" class="flex  justify-between ">
+            <li>
+              <ul role="list" class="-mx-2 space-y-1 ">
+                <li class="group flex gap-x-6 py-3 items-center p-2 text-sm/6">
+                    <a [routerLink]="['/dashboard/home']" routerLinkActive="active"  class=" sidebar-icon flex items-center justify-center">
+                        <img src="assets/icons/home.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    </a>
+                    <span class="sidebar-item">Inicio</span>
+                </li>
+                <li class="group flex gap-x-6 py-3 items-center p-2 text-sm/6">
+                    <a [routerLink]="['/dashboard/card-center']" routerLinkActive="active" class="sidebar-icon flex items-center justify-center">
+                        <img src="assets/icons/credit-card.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    </a>
+                    <span class="sidebar-item">Centro de tarjetas</span>
+                </li>
+                <li class="group flex gap-x-6 py-3 items-center p-2 text-sm/6">
+                    <a  [routerLink]="['/dashboard/recharge-wallet']"  routerLinkActive="active"   class="sidebar-icon flex items-center justify-center">
+                        <img src="assets/icons/wallet.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    </a>
+                    <span class="sidebar-item">Recargar Wallet</span>
+                </li>
+                <li class="group flex gap-x-6 py-3 items-center p-2 text-sm/6">
+                    <a [routerLink]="['/dashboard/tutorials']"  routerLinkActive="active"  class="sidebar-icon flex items-center justify-center">
+                        <img src="assets/icons/tutorials.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    </a>
+                    <span class="sidebar-item">Tutoriales</span>
+                </li>
+                <li   class="group flex gap-x-6 py-3 items-center p-2 text-sm/6">
+                    <a [routerLink]="['/dashboard/support']"  routerLinkActive="active"  class="sidebar-icon flex items-center justify-center">
+                        <img src="assets/icons/support.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    </a>
+                    <span class="sidebar-item">Soporte</span>
+                </li>
+              </ul>
+
+            </li>
+            <span class="border-custom"></span>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
