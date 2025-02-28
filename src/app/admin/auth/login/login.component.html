@@ -1,0 +1,39 @@
+<div class="flex min-h-full">
+  <!-- Sección de la imagen a la izquierda -->
+  <div class="hidden lg:flex lg:w-2/3 bg-gray-100 items-center justify-center">
+    <img class="h-auto w-3/4" src="assets/images/login-admin.png" alt="Your Company">
+  </div>
+
+  <!-- Sección del formulario a la derecha -->
+  <div style="background-color: #FAFCFF !important;" class="flex flex-1 flex-col justify-center  px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+    <div class="mx-auto w-full max-w-sm lg:w-96">
+      <div class="flex justify-center">
+          <img src="assets/images/logo-black.png"  alt="">
+      </div>
+
+      <div class="mt-10">
+        <div class="space-y-6">
+          <div class="mb-7">
+            <label for="email" class="pl-3 block text-base font-bold text-[#7B87AD]">Usuario</label>
+            <div class="mt-2">
+              <input type="email" [(ngModel)]="email" name="email" id="email" class="block w-full rounded-lg bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7b87ad]  placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder="Escribe tu email">
+            </div>
+          </div>
+          <div class="mb-7">
+            <label for="password" class="pl-3 block text-base font-bold text-[#7B87AD]">Contraseña</label>
+            <div class="mt-2">
+              <input type="password" [(ngModel)]="password" name="password" id="password" class="block w-full rounded-lg bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7b87ad]  placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder="Escribe tu clave segura">
+            </div>
+          </div>
+
+          <div>
+            <button (click)="onLogin()"  type="submit"
+              class="btn-primary cursor-pointer">
+              Iniciar sesión
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

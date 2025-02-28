@@ -1,0 +1,96 @@
+<div class="h-full w-full b flex items-center justify-center lg:px-8 px-4">
+  <div class="login-wrapper w-full md:max-w-4xl md:-ml-3 mt-4 ">
+    <div class="badge mb-7 ">
+      <p class="text-[#455073] font-bold text-base">Tu Perfil</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6 mb-7">
+        <section>
+          <div class="flex justify-start items-center gap-x-6 mb-6">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" class="rounded-2xl w-24 h-24 object-cover border-yellow-500 border" alt="">
+            <div>
+              <p class="text-sm font-normal mb-2 text-[#313131]">
+                Nombre de usuario:
+              </p>
+              <p class="text-base  font-bold text-[#313131]">
+                {{currentUser?.fullName}}
+              </p>
+            </div>
+          </div>
+          <div class="card mb-3">
+              <div class="flex justify-between items-center py-4 w-full">
+                <p class="text-base font-normal  text-[#313131]">
+                  Términos y condiciones
+                </p>
+                <a href="">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                  </svg>
+                </a>
+              </div>
+          </div>
+          <div class="card mb-3">
+              <div class="flex justify-between items-center py-4 w-full">
+                <p class="text-base font-normal  text-[#313131]">
+                  Política y privacidad
+                </p>
+                <a href="">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                  </svg>
+                </a>
+              </div>
+          </div>
+          <div class="card ">
+              <div class="flex justify-between items-center py-4 w-full">
+                <p class="text-base font-normal  text-[#313131]">
+                  Contactar a soporte
+                </p>
+                <a href="">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                  </svg>
+                </a>
+              </div>
+          </div>
+        </section>
+        <section class="profile-info-card flex flex-col justify-around gap-y-4">
+          <div class="">
+            <p class="text-sm font-normal mb-2 text-[#313131]">
+              Correo electrónico:
+            </p>
+            <p class="text-base  font-bold text-[#313131]">
+              {{currentUser?.email}}
+            </p>
+          </div>
+          <div class="">
+            <p class="text-sm font-normal mb-2 text-[#313131]">
+              Dirección:
+            </p>
+            <p class="text-base  font-bold text-[#313131]">
+              {{currentUser?.address}}
+            </p>
+          </div>
+          <div class="">
+            <p class="text-sm font-normal mb-2 text-[#313131]">
+              Número de teléfono:
+            </p>
+            <p class="text-base  font-bold text-[#313131]">
+              {{currentUser?.phone}}
+            </p>
+          </div>
+          <!-- <div class="">
+            <p class="text-sm font-normal mb-2 text-[#313131]">
+              Última actualización:
+            </p>
+            <p class="text-base  font-bold text-[#313131]">
+              02/02/2025
+            </p>
+          </div> -->
+        </section>
+    </div>
+
+
+    <button class="btn-primary mb-3 cursor-pointer" [routerLink]="['']" >Cerrar sesión</button>
+</div>
+</div>

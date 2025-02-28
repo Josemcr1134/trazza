@@ -1,0 +1,27 @@
+.login-wrapper {
+  background-color: white;
+  box-shadow: 0px 10px 30px 0px #7883A84D;
+  padding: 24px 31px;
+  border-radius:20px ;
+}
+
+.btn-primary {
+  background-color: #FBBC30;
+  color: #171717;
+  border-radius: 24px ;
+  padding: 6px ;
+  text-align: center;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn-outline{
+  border: #05134A solid 1px ;
+  border-radius: 24px;
+  color:#05134A ;
+  font-size: 16px;
+  padding: 6px;
+  width: 100%;
+  font-weight: 400;
+}

@@ -1,0 +1,48 @@
+<div class="bg-register h-full w-full bg-[#f7f8fc] flex items-center justify-center lg:px-8 px-4">
+  <div class="login-wrapper w-full md:max-w-[450px] md:-ml-3 mt-4 ">
+    <div class="badge  ">
+      <p class="text-[#455073] font-bold text-base">Registro</p>
+      <button class="border-2 border-[#455073] rounded-md text-[#455073]">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="flex justify-between items-center my-8" >
+      <img src="assets/images/logo-black.png" class="  h-full w-auto" alt="">
+      <h1 class="text-[#455073] text-3xl font-bold ">Paso 2</h1>
+    </div>
+
+    <div class="mb-8">
+      <p class="text-sm font-normal text-[#455073]">
+        Introduce el código de verificación que acabamos de enviar a tu dirección de correo electrónico.
+      </p>
+    </div>
+    <div class="mb-12">
+      <label for="verificationCode" class="block text-base font-bold text-[#7B87AD]">
+        Código de verificación
+      </label>
+      <div class="mt-2 justify-between flex space-x-2">
+        <input type="text" maxlength="1" class="w-12 h-14 rounded-md bg-[#E4EEF8] text-center text-base text-[#7B87AD] placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"  />
+        <input type="text" maxlength="1" class="w-12 h-14 rounded-md bg-[#E4EEF8] text-center text-base text-[#7B87AD] placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"  />
+        <input type="text" maxlength="1" class="w-12 h-14 rounded-md bg-[#E4EEF8] text-center text-base text-[#7B87AD] placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"  />
+        <input type="text" maxlength="1" class="w-12 h-14 rounded-md bg-[#E4EEF8] text-center text-base text-[#7B87AD] placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"  />
+        <input type="text" maxlength="1" class="w-12 h-14 rounded-md bg-[#E4EEF8] text-center text-base text-[#7B87AD] placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"  />
+        <input type="text" maxlength="1" class="w-12 h-14 rounded-md bg-[#E4EEF8] text-center text-base text-[#7B87AD] placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"  />
+      </div>
+    </div>
+
+    <div class="mb-5   rounded-lg flex items-start justify-between gap-4 ">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+        </svg>
+      </div>
+      <p class="text-[#455073] font-normal text-sm -mt-1">
+        Si no ha recibido un correo electrónico cuando expire el temporizador, solicite un nuevo correo electrónico a continuación.
+      </p>
+    </div>
+
+    <button class="btn-primary mb-3 cursor-pointer" [routerLink]="['/auth/register/set-password']" >Continuar</button>
+</div>
+</div>

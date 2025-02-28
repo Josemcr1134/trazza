@@ -1,0 +1,28 @@
+<div class="h-full bg-[#f7f8fc]">
+  <div class="max-w-7xl lg:px-8 px-4 mx-auto h-full">
+      <div class="flex justify-center items-center h-full">
+          <img src="assets/images/login.png" class="md:block hidden" alt="">
+          <div class="login-wrapper w-full md:max-w-[450px] md:-ml-3 mt-4 ">
+                <img src="assets/images/logo-black.png" class="mx-auto mb-4 h-full w-auto" alt="">
+
+                <div class="mb-3">
+                  <label for="email" class="pl-3 block text-base font-bold text-[#7B87AD]">Usuario</label>
+                  <div class="mt-2">
+                    <input type="email" [(ngModel)]="email" name="email" id="email" class="block w-full rounded-2xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7B87AD66]/40  placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder="Escribe tu email">
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="pl-3 block text-base font-bold text-[#7B87AD]">Contraseña</label>
+                  <div class="mt-2">
+                    <input type="password" [(ngModel)]="password" name="password" id="password" class="block w-full rounded-2xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7B87AD66]/40  placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder="Escribe tu clave segura">
+                  </div>
+                </div>
+
+                <!-- <a href="" class="text-center block text-sm font-bold text-[#7B87AD] mb-3">¿Olvidaste tu contraseña?</a> -->
+
+                <button (click)="onLogin()" class="btn-primary mb-3">Iniciar sesión</button>
+                <button class="btn-outline cursor-pointer" [routerLink]="['/auth/register']"  >Registro <strong>rápido</strong> </button>
+          </div>
+      </div>
+  </div>
+</div>

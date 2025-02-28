@@ -1,0 +1,59 @@
+<div class="bg-register h-full w-full bg-[#f7f8fc] flex items-center justify-center lg:px-8 px-4">
+  <div class="login-wrapper w-full md:max-w-[450px] md:-ml-3 mt-4 ">
+    <div class="badge  ">
+      <p class="text-[#455073] font-bold text-base">KYC</p>
+      <button class="border-2 border-[#455073] rounded-md text-[#455073]">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="flex justify-start items-center my-8" >
+      <h1 class="text-[#455073] text-3xl font-bold ">KYC</h1>
+    </div>
+
+    <div class="mb-8">
+      <p class="text-sm font-normal text-[#455073]">
+        Necesitamos validar tu identidad para que puedas usar nuestros servicios financieros correctamente.
+      </p>
+    </div>
+
+
+    <ul class="mb-7">
+      <li class="bg-gray-50 mb-3 w-full rounded-xl py-4 px-2 flex justify-start items-center gap-4">
+          <span class="lg:h-6 lg:w-6 h-4 w-4 rounded-full bg-red-500"></span>
+          <span class="bg-[#FBBC30] rounded-full h-12 w-12 flex items-center justify-center p-3">
+            <div>
+              <img src="assets/icons/user.png" alt="">
+            </div>
+          </span>
+          <p class="text-[#455073] text-sm font-normal">Escanea la <strong>parte frontal</strong> de tu documento. </p>
+      </li>
+      <li class="bg-gray-50 mb-3 w-full rounded-xl py-4 px-2 flex justify-start items-center gap-4">
+          <span class="lg:h-6 lg:w-6 h-4 w-4 rounded-full bg-red-500"></span>
+          <span class="bg-[#FBBC30] rounded-full h-12 w-12 flex items-center justify-center p-3">
+            <div>
+              <img src="assets/icons/user.png" alt="">
+            </div>
+          </span>
+          <p class="text-[#455073] text-sm font-normal">Escanea la <strong>parte trasera</strong> de tu documento. </p>
+      </li>
+      <li class="bg-gray-50 mb-3 w-full rounded-xl py-4 px-2 flex justify-start items-center gap-4">
+        <span class="lg:h-6 lg:w-6 h-4 w-4 rounded-full bg-red-500"></span>
+          <span class="bg-[#FBBC30] rounded-full h-12 w-12 flex items-center justify-center p-3">
+            <div>
+              <img src="assets/icons/user.png" alt="">
+            </div>
+          </span>
+          <p class="text-[#455073] text-sm font-normal">Validación fácial </p>
+      </li>
+    </ul>
+
+
+
+
+
+
+    <button class="btn-primary mb-3 cursor-pointer" [routerLink]="['/auth/login']" >Continuar</button>
+</div>
+</div>

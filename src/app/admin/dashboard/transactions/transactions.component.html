@@ -1,0 +1,63 @@
+
+<div class=" mb-12">
+  <div class="relative">
+    <input [(ngModel)]="searchTerm" (input)="searchTransactions()"  type="search" class=" rounded-2xl w-full text-black px-4 py-2.5" placeholder="Buscar">
+    <div class="absolute right-5 top-1.5">
+        <div class="bg-[#FBBC30] rounded-full p-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.6407 10.607Z" />
+          </svg>
+        </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="px-4 sm:px-6 lg:px-8 table-wrapper ">
+  <div class="">
+    <div class="sm:flex sm:items-center">
+      <div class="sm:flex-auto">
+        <h1 class="text-base font-bold text-[#455073]">Últimas compras globales</h1>
+      </div>
+    </div>
+    <div class="mt-8 flow-root px-8">
+      <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <table *ngIf="filteredTransactions.length > 0 ; else noResults" class="min-w-full ">
+            <thead>
+              <tr>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-center bg-[#E2E8F0] text-sm font-semibold text-gray-900 sm:pl-3">Usuario</th>
+                <th scope="col" class="px-3 py-3.5 text-center bg-[#E2E8F0] text-sm font-semibold text-gray-900">Valor</th>
+                <th scope="col" class="px-3 py-3.5 text-center bg-[#E2E8F0] text-sm font-semibold text-gray-900">Moneda</th>
+                <th scope="col" class="px-3 py-3.5 text-center bg-[#E2E8F0] text-sm font-semibold text-gray-900">Fecha</th>
+                <th scope="col" class="px-3 py-3.5 text-center bg-[#E2E8F0] text-sm font-semibold text-gray-900">Motivo</th>
+                <th scope="col" class="px-3 py-3.5 text-center bg-[#E2E8F0] text-sm font-semibold text-gray-900">Estado</th>
+
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-300">
+              <tr *ngFor="let t of filteredTransactions" class=" text-center">
+                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">{{t.userName}}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{t.amount | currency}} </td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">USD</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{t.transactionDate | date:'medium'}}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{t.reason}}</td>
+                <td class="whitespace-nowrap px-3 py-4  ">
+                  <span class="bg-green-100 text-green-500 text-sm border-green-500 rounded-2xl px-7 py-2">
+                    Exitosa
+                  </span>
+                </td>
+
+              </tr>
+              <!-- More people... -->
+            </tbody>
+          </table>
+          <ng-template #noResults>
+            <p class="text-red-500">No se encontraron transacciones con ese criterio de búsqueda.</p>
+          </ng-template>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

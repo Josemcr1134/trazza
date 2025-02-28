@@ -1,0 +1,10 @@
+.sidebar-item:hover, .active{
+  background-color: #171717;
+  color:#FBBC30 !important;
+  fill: #FBBC30 !important;
+}
+
+.sidebar{
+  box-shadow: 0px 10px 30px 0px #7883A84D;
+  background-color: #FFFFFF;
+}

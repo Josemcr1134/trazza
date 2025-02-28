@@ -1,0 +1,50 @@
+<div class="bg-register h-full w-full bg-[#f7f8fc] flex items-center justify-center lg:px-8 px-4">
+  <div class="login-wrapper w-full md:max-w-[450px] md:-ml-3 mt-4 ">
+    <div class="badge  ">
+      <p class="text-[#455073] font-bold text-base">Registro</p>
+      <button routerLink="/auth/register/set-password" class=" rounded-md text-[#455073]">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+        </svg>
+      </button>
+    </div>
+    <div class="flex justify-between items-center my-8" >
+      <img src="assets/images/logo-black.png" class="  h-full w-auto" alt="">
+      <h1 class="text-[#455073] text-3xl font-bold ">Paso 3</h1>
+    </div>
+
+    <div class="mb-8">
+      <p class="text-sm font-normal text-[#455073]">
+        Suminístranos la siguiente información personal
+      </p>
+    </div>
+    <div class="mb-5">
+      <label for="fullName" class=" block text-base font-bold text-[#7B87AD]">Nombre completo</label>
+      <div class="mt-2">
+        <input type="text" [(ngModel)]="fullName" name="fullName" id="fullName" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7B87AD66]/40  placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder="Escribe tu dirección">
+      </div>
+    </div>
+    <div class="mb-5">
+      <label for="address" class=" block text-base font-bold text-[#7B87AD]">Dirección</label>
+      <div class="mt-2">
+        <input type="text" [(ngModel)]="address" name="address" id="address" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7B87AD66]/40  placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder="Escribe tu dirección">
+      </div>
+    </div>
+    <div class="mb-5">
+      <label for="phone" class=" block text-base font-bold text-[#7B87AD]">Teléfono</label>
+      <div class="mt-2">
+        <input type="number" max="9999999999" [(ngModel)]="phone" name="phone" id="phone" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7B87AD66]/40  placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder="Escribe tu teléfono">
+      </div>
+    </div>
+    <div class="mb-5">
+      <label for="country" class=" block text-base font-bold text-[#7B87AD]">País</label>
+      <div class="mt-2">
+        <input type="text" [(ngModel)]="country" name="country" id="country" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7B87AD66]/40  placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder="Escribe tu país">
+      </div>
+    </div>
+
+
+
+    <button class="btn-primary mb-3 cursor-pointer" (click)="completeRegistration()" >Continuar</button>
+</div>
+</div>

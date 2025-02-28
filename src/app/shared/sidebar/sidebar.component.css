@@ -1,0 +1,34 @@
+.sidebar{
+  background: white;
+  box-shadow: 0px 10px 30px 0px #7883A84D;
+  border-radius: 28px;
+}
+
+
+.profile-wrapper{
+  background-color: #FBBC30;
+  border-radius: 14px;
+  width: 100%;
+  padding: 10px 13px;
+
+}
+
+.sidebar-item{
+  color: #455073;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -1%;
+}
+
+
+
+.border-custom{
+   border-right: 26px #FBBC30 solid;
+  -webkit-border-top-left-radius: 043px;
+  -webkit-border-bottom-left-radius: 33px;
+  -moz-border-radius-topleft: 043px;
+  -moz-border-radius-bottomleft: 33px;
+  border-top-left-radius: 043px;
+  border-bottom-left-radius: 33px;
+}

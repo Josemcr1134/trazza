@@ -1,0 +1,120 @@
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+
+
+  <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+  <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+      <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl sm:p-6">
+        <div class="h-full w-full b flex items-center justify-center ">
+          <div class="login-wrapper w-full md:max-w-4xl md:-ml-3 mt-4 ">
+            <div class="badge mb-7 flex justify-between items-center">
+              <p class="text-[#455073] font-bold text-base">Perfil Usuario</p>
+              <button (click)="goAway()" class="border-2 border-[#455073] rounded-md text-[#455073]">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2  items-center gap-6 mb-7">
+                <section>
+                  <div class="flex justify-start items-center gap-x-6 mb-6">
+                    <img src="https://s3-alpha-sig.figma.com/img/fd3d/4c48/a8b689cbbfb343fe22651fcb4dc1c2e0?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=tCNEsYxHOJniI5O7WcxTU27VdNZrPcgL~t~5TNQ5yKrsi1We703o81CmsG8uvS4HFVsfQ7Y9kV41rEXIbfijH3RO55nQiUdCkLa09XqCa2vstQ6nx6MNkqTiz~QyPcyyX9jy6a~UVj9rDI6-gu5ygfDsETEyJqkZMFEcZwcKhf8nMRRgG5cYTm9nnKEMZlqFJBBJZ2JfePJvfjv0EdEcRwakKoHjQz4~pvtI8k-t7uSjH38mVbUPUaZW6UpRmaDDdShg~1UypM6~HkNDtl7PVmEq0dSVNYDaa~6WVqecFfIV09AL0bZM3bbFNXD9UwEyttOHLWdnxH7AbI3h-c2N5g__" class="rounded-2xl w-24 h-24 object-cover border-yellow-500 border" alt="">
+                    <div>
+                      <p class="text-sm font-normal mb-2 text-[#313131]">
+                        Nombre de usuario:
+                      </p>
+                      <p class="text-base  font-bold text-[#313131]">
+                        {{data.fullName}}
+                      </p>
+                    </div>
+                  </div>
+
+                </section>
+                <section class="profile-info-card flex flex-col justify-between gap-y-4">
+                  <div class="">
+                    <p class="text-sm font-normal mb-2 text-[#313131]">
+                      Correo electrónico:
+                    </p>
+                    <p class="text-base  font-bold text-[#313131]">
+                      {{data.email}}
+                    </p>
+                  </div>
+                  <div class="">
+                    <p class="text-sm font-normal mb-2 text-[#313131]">
+                      Dirección:
+                    </p>
+                    <p class="text-base  font-bold text-[#313131]">
+                      {{data.address}}
+                    </p>
+                  </div>
+                  <div class="">
+                    <p class="text-sm font-normal mb-2 text-[#313131]">
+                      Número de teléfono:
+                    </p>
+                    <p class="text-base  font-bold text-[#313131]">
+                     {{data.phone}}
+                    </p>
+                  </div>
+                  <div class="">
+                    <p class="text-sm font-normal mb-2 text-[#313131]">
+                      Última actualización:
+                    </p>
+                    <p class="text-base  font-bold text-[#313131]">
+                      {{data.registrationDate}}
+                    </p>
+                  </div>
+                </section>
+            </div>
+            <div class="px-4 sm:px-6 lg:px-8 table-wrapper ">
+              <div class="">
+                <div class="sm:flex sm:items-center">
+                  <div class="sm:flex-auto">
+                    <h1 class="text-base font-bold text-[#455073]">Últimas compras </h1>
+                  </div>
+                </div>
+                <div class="mt-8 flow-root">
+                  <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                      <table class="min-w-full ">
+                        <thead>
+                          <tr>
+                            <th scope="col" class="py-3.5 pl-4 pr-3 text-center bg-[#E2E8F0] text-sm font-semibold text-gray-900 sm:pl-3">Usuario</th>
+                            <th scope="col" class="px-3 py-3.5 text-center bg-[#E2E8F0] text-sm font-semibold text-gray-900">Valor</th>
+                            <th scope="col" class="px-3 py-3.5 text-center bg-[#E2E8F0] text-sm font-semibold text-gray-900">Moneda</th>
+                            <th scope="col" class="px-3 py-3.5 text-center bg-[#E2E8F0] text-sm font-semibold text-gray-900">Fecha</th>
+                            <th scope="col" class="px-3 py-3.5 text-center bg-[#E2E8F0] text-sm font-semibold text-gray-900">Motivo</th>
+                            <th scope="col" class="px-3 py-3.5 text-center bg-[#E2E8F0] text-sm font-semibold text-gray-900">Estado</th>
+
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let t of data.transactions" class="bg-white divide-y divide-gray-300">
+                          <tr class=" text-center">
+                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">{{t.amount | currency}}</td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">USD</td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{t.transactionDate | date:'medium'}}</td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{t.reason}}</td>
+                            <td class="whitespace-nowrap px-3 py-4  ">
+                              <span class="bg-green-100 text-green-500 text-sm border-green-500 rounded-2xl px-7 py-2">
+                                Exitosa
+                              </span>
+                            </td>
+
+                          </tr>
+                          <!-- More people... -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

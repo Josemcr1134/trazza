@@ -1,0 +1,137 @@
+<div class="grid lg:grid-cols-2 gap-8 mb-7 lg:mb-14">
+  <div class="">
+    <div class="card">
+      <div class="card-image-black">
+        <div class="card-overlay">
+            <div class="flex w-full justify-between items-start mb-6">
+                <img src="assets/images/logo.png" class="w-16 h-10 " alt="">
+                <p class="text-xs text-white font-normal">Tarjeta física</p>
+            </div>
+            <div *ngIf="cardSelected !== 'physical' " class="flex w-full justify-between items-start mb-6">
+              <div>
+                <p class="text-3xl text-start text-white font-semibold" >{{currentUser.cards[0].balance | currency}}</p>
+                <p class="text-xs text-white text-start font-normal">Balance total</p>
+              </div>
+              <img src="assets/icons/mastercard.png" class="w-16 h-9 " alt="">
+            </div>
+            <div *ngIf="cardSelected === 'physical' && showCardInfo" class="flex w-full justify-between items-start mb-6">
+              <div>
+                <p class="text-base text-white font-semibold">{{currentUser.cards[0].number }}</p>
+                <p class="text-sm text-white text-start font-normal">{{currentUser.cards[0].expDate }}</p>
+              </div>
+              <p class="text-sm text-white text-start font-normal">{{currentUser.cards[0].cvc }}</p>
+            </div>
+            <div class="flex justify-between flex-wrap w-full items-center gap-x-3">
+                <a (click)="showCardData('physical')"  class="text-white text-sm font-medium flex items-center gap-x-2 cursor-pointer">
+                  Ver datos
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+                    <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                    <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+                <div class="flex justify-end gap-x-3">
+                    <button (click)="chooseCard(currentUser.cards[0].id, currentUser.cards[0].type, currentUser.cards[0].balance, true)" class="btn-outline-light">
+                      Recargar
+                    </button>
+                    <button (click)="chooseCard(currentUser.cards[0].id, currentUser.cards[0].type, currentUser.cards[0].balance, false)" class="btn-outline-light">
+                      Transferir
+                    </button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="card">
+      <div class="card-image-light">
+        <div class="card-overlay">
+            <div class="flex w-full justify-between items-start mb-6">
+                <img src="assets/images/logo.png" class="w-16 h-10 " alt="">
+                <p class="text-xs text-black font-normal">Tarjeta virtual</p>
+            </div>
+            <div *ngIf="cardSelected !== 'virtual'  " class="flex w-full justify-between items-start mb-6">
+              <div>
+                <p class="text-3xl text-black font-semibold">{{currentUser.cards[1].balance | currency}}</p>
+                <p class="text-xs text-black text-start font-normal">Balance total</p>
+              </div>
+              <img src="assets/icons/mastercard-black.svg" class="w-16 h-9 " alt="">
+            </div>
+            <div *ngIf="cardSelected === 'virtual' && showCardInfo" class="flex w-full justify-between items-start mb-6">
+              <div>
+                <p class="text-base text-black font-semibold">{{currentUser.cards[1].number }}</p>
+                <p class="text-sm text-black text-start font-normal">{{currentUser.cards[1].expDate }}</p>
+              </div>
+              <p class="text-sm text-black text-start font-normal">{{currentUser.cards[1].cvc }}</p>
+            </div>
+            <div class="grid grid-cols-3 w-full items-center gap-x-3">
+                <a  (click)="showCardData('virtual')" class="btn-dark flex items-center  justify-around gap-x-2 cursor-pointer">
+                  Ver datos
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+                    <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                    <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+                <button  (click)="chooseCard(currentUser.cards[1].id, currentUser.cards[1].type, currentUser.cards[1].balance, true)" class="btn-outline-dark text-base">
+                  Recargar
+                </button>
+                <button  (click)="chooseCard(currentUser.cards[1].id, currentUser.cards[1].type, currentUser.cards[1].balance, false)" class="btn-outline-dark text-base">
+                  Transferir
+                </button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="px-4 sm:px-6 lg:px-8 table-wrapper ">
+  <div class="">
+    <div class="sm:flex sm:items-center">
+      <div class="sm:flex-auto">
+        <h1 class="text-base font-normal text-[#455073]">Historial de  transacciones</h1>
+      </div>
+    </div>
+    <div class="mt-8 flow-root px-6">
+      <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <table class="min-w-full divide-y divide-gray-300">
+            <thead>
+              <tr>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-center text-sm font-semibold text-gray-900 sm:pl-3">ID</th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Fecha</th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Wallet</th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Tipo</th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Monto</th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Estado</th>
+
+              </tr>
+            </thead>
+            <tbody class="bg-white">
+              <tr *ngFor="let t of transactions" class=" text-center">
+                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">{{t.id | slice:0:10}}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ t.transactionDate | date:'medium' }}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{t?.walletAddress}}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{t.reason}}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{t.amount | currency}}</td>
+                <td class="whitespace-nowrap px-3 py-4  ">
+                  <span class="bg-green-100 text-green-500 text-sm border-green-500 rounded-2xl px-7 py-2">
+                    Exitosa
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <!-- More people... -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-add-balance [cardBalance]="cardBalanceSelected" [cardId]="cardIdSelected" [cardType]="cardTypeSelected" *ngIf="showLoadBalanceModal" (close)="refresh($event)"></app-add-balance>
+
+<app-transfer-balance  [cardBalance]="cardBalanceSelected" [cardId]="cardIdSelected" *ngIf="showTransferBalanceModal" (close)="refresh($event)"  ></app-transfer-balance>

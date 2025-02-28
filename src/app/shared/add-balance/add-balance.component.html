@@ -1,0 +1,66 @@
+
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+
+  <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+  <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+      <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+            <div class="badge flex items-center justify-between mb-4">
+              <p class="text-[#455073] font-bold text-base">Recargar tarjeta</p>
+              <button (click)="goAway()"  class="border-2 border-[#455073] rounded-md text-[#455073]">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div class=" mb-5">
+              <div *ngIf="cardType == 'physical'" class="card-image-black">
+                <div class="card-overlay">
+                    <div class="flex w-full justify-between items-start mb-6">
+                        <img src="assets/images/logo.png" class="w-16 h-10 " alt="">
+                        <p class="text-xs text-white font-normal">Tarjeta física</p>
+                    </div>
+                    <div class="flex w-full justify-between items-start ">
+                      <div>
+                        <p class="text-3xl text-start text-white font-semibold">{{cardBalance | currency}}</p>
+                        <p class="text-xs text-white text-start font-normal">Balance total</p>
+                      </div>
+                      <img src="assets/icons/mastercard.png" class="w-16 h-9 " alt="">
+                    </div>
+                </div>
+              </div>
+
+              <div *ngIf="cardType == 'virtual'" class="card-image-light ">
+                <div class="card-overlay ">
+                    <div class="flex w-full justify-between items-start mb-6">
+                        <img src="assets/images/logo.png" class="w-16 h-10 " alt="">
+                        <p class="text-xs text-black font-normal">Tarjeta virtual</p>
+                    </div>
+                    <div class="flex w-full justify-between items-start ">
+                      <div>
+                        <p class="text-3xl text-black font-semibold">{{cardBalance | currency}}</p>
+                        <p class="text-xs text-black text-start font-normal">Balance total</p>
+                      </div>
+                      <img src="assets/icons/mastercard-black.svg" class="w-16 h-9 " alt="">
+                    </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="number" class="block text-base font-bold text-[#7B87AD] text-center">Cantidad a recargar</label>
+              <div class="mt-2">
+                <input  [(ngModel)]="amount" type="number" name="number" id="number" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7b87ad]  focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" placeholder="Ingresa el saldo a recargar">
+              </div>
+            </div>
+            <div class="mb-4 flex items-center gap-x-4">
+              <label for="text" class="block text-base font-bold text-[#7B87AD] text-center">Wallet</label>
+              <input [(ngModel)]="walletAddress" type="text" name="text" id="text" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7b87ad]  focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" placeholder="Ingresa la wallet de procedencia">
+            </div>
+            <button (click)="recharge()" class="btn-primary mb-3 cursor-pointer" >Recargar tarjeta</button>
+      </div>
+    </div>
+  </div>
+</div>
