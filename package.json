@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+     "install:vercel": "npm install --force --legacy-peer-deps"
   },
   "private": true,
   "dependencies": {
