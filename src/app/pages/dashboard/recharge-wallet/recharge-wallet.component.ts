@@ -3,6 +3,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { Transaction, User } from '../../../core/interfaces/user.interface';
 import { CommonModule } from '@angular/common';
 import { RechargeWalletBalanceComponent } from '../../../shared/recharge-wallet/recharge-wallet.component';
+import { ThemeService } from '../../../core/services/theme.service';
 
 @Component({
   selector: 'app-recharge-wallet',
@@ -30,16 +31,22 @@ export class RechargeWalletComponent {
       balance:0
     },
     role:2,
-    registrationDate:''
+    registrationDate:'',
+    isBlocked: false
+
   } ;
 
   public recharges:Transaction[] = [];
   public showRechargeBalanceModal:boolean = false;
-  constructor(private userService: AuthService) {
-      this.refresh();
-    console.log(this.currentUser)
-  };
 
+  public isDarkBoolean:boolean = false;
+  constructor(private themeSvc:ThemeService, private userService: AuthService) {
+    this.themeSvc.isDarkMode$.subscribe((isDark:any) => {
+      this.isDarkBoolean = isDark;
+      console.log(this.isDarkBoolean)
+    });
+    this.refresh();
+  };
   refresh(){
     this.currentUser = this.userService.getCurrentUser() ||  {
       email: '',
@@ -56,7 +63,9 @@ export class RechargeWalletComponent {
         balance:0
       },
       role:2,
-      registrationDate:''
+      registrationDate:'',
+      isBlocked: false
+
 
     } ;
 

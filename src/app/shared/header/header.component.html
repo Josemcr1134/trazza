@@ -1,4 +1,4 @@
-<div class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 header px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+<div [ngClass]="isDarkMode ? 'bg-[#181818] text-white' : 'bg-white text-[#171717]'" class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 header px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
   <button (click)="showMobileMenu = !showMobileMenu" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
     <span class="sr-only">Open sidebar</span>
     <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
@@ -9,7 +9,7 @@
 
   <div class="flex w-full justify-between gap-x-4 self-stretch lg:gap-x-6">
     <div class="  items-center flex">
-      <p class="text-[#171717] text-nowrap font-normal text-base">
+      <p class=" text-nowrap font-normal text-base">
         Panel<strong> / Inicio</strong>
       </p>
     </div>
@@ -17,35 +17,46 @@
       <ul class="flex gap-x-4 animate-slide whitespace-nowrap md:w-auto w-[120px]">
         <!-- Elementos del carrusel -->
         <li *ngFor="let item of items"
-            class="flex items-center justify-center gap-x-4 min-w-[100px] md:min-w-[200px]">
+            class="flex items-center justify-center gap-x-4 min-w-[100px] ">
           <img [src]="item.icon" alt="" class="w-8 h-8 md:w-10 md:h-10">
           <div class="text-center">
             <p class="text-red-500 text-xs md:text-sm">{{ item.percentage }}</p>
-            <p class="text-black text-xs md:text-sm">{{ item.price }}</p>
+            <p class=" text-xs md:text-sm">{{ item.price }}</p>
           </div>
         </li>
 
         <!-- Duplicamos para el bucle infinito suave solo en pantallas grandes -->
-        <li *ngFor="let item of items"
-            class="flex  items-center justify-center gap-x-4 min-w-[100px] md:min-w-[200px]">
-          <img [src]="item.icon" alt="" class="w-8 h-8 md:w-10 md:h-10">
-          <div class="text-center">
-            <p class="text-red-500 text-xs md:text-sm">{{ item.percentage }}</p>
-            <p class="text-black text-xs md:text-sm">{{ item.price }}</p>
-          </div>
-        </li>
+
       </ul>
     </div>
 
 
 
     <div class="flex items-center gap-x-4 lg:gap-x-6">
-     <button type="button" class="-m-2.5 p-2 text-[#171717] bg-[#FBBC30] rounded-md ">
+     <button type="button" class="-m-2.5 p-2  bg-[#FBBC30] rounded-md ">
         <span class="sr-only">View notifications</span>
         <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
           <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
         </svg>
       </button>
+      <div class="flex items-center justify-center  p-2 rounded-2xl bg-gray-100 dark:bg-gray-900">
+        <button
+          (click)="toggleDarkMode()"
+          class="relative w-16 h-8 bg-gray-300 dark:bg-gray-700 rounded-full p-1 transition duration-300"
+        >
+          <div
+            class="absolute top-1 left-1 w-6 h-6 bg-white dark:bg-yellow-400 rounded-full shadow-md transform transition-transform duration-300"
+            [class.translate-x-8]="isDarkMode"
+          ></div>
+          <span class="absolute top-1/2 -translate-y-1/2 left-2 text-gray-500 dark:text-yellow-400">
+            ☀️
+          </span>
+          <span class="absolute top-1/2 -translate-y-1/2 right-2 text-gray-500 dark:text-white">
+            🌙
+          </span>
+        </button>
+      </div>
+
     </div>
   </div>
 </div>

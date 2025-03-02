@@ -30,7 +30,8 @@ export class UserDetailComponent {
       balance:0
     },
     role:2,
-    registrationDate:''
+    registrationDate:'',
+    isBlocked: false
   } ;
 
   goAway(){

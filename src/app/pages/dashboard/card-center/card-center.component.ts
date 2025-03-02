@@ -45,7 +45,9 @@ export class CardCenterComponent {
         balance:0
       },
       role:2,
-      registrationDate:''
+      registrationDate:'',
+      isBlocked: false
+
     } ;
 
     this.transactions = this.currentUser.transactions.filter( ct => ct.cardId !== 'WALLET');
@@ -66,7 +68,9 @@ export class CardCenterComponent {
       balance:0
     },
     role:2,
-    registrationDate:''
+    registrationDate:'',
+    isBlocked: false
+
   } ;
   public isLoading:boolean = false;
   constructor(private userService: AuthService) {

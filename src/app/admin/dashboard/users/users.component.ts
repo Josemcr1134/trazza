@@ -4,6 +4,8 @@ import { UserDetailComponent } from '../../shared/user-detail/user-detail.compon
 import { User } from '../../../core/interfaces/user.interface';
 import { AuthService } from '../../../core/services/auth.service';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { EditUserComponent } from '../../shared/edit-user/edit-user.component';
 
 @Component({
   selector: 'app-users',
@@ -11,13 +13,15 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     UserDetailComponent,
-    FormsModule
+    FormsModule,
+    EditUserComponent
   ],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
 })
 export class UsersComponent {
   public showUserDetail:boolean = false;
+  public showUserEditModal:boolean = false;
   public users:User[] = [];
   public filteredUsers:User[] = [];
   public userSelected!:User;
@@ -41,11 +45,37 @@ export class UsersComponent {
     this.users =  this.authSvc.loadUsersFromLocalStorage();
     this.filteredUsers = this.users;
     this.showUserDetail = false;
+    this.showUserEditModal = false;
     console.log(this.users)
   };
 
   chooseUserDetail(u:User){
     this.userSelected = u;
     this.showUserDetail = !this.showUserDetail;
+  };
+
+  chooseUserEdit(u:User){
+    this.userSelected = u;
+    this.showUserEditModal = !this.showUserEditModal;
+  };
+
+  changeUserStatus(isBlocked:boolean, email:string){
+    if (isBlocked) {
+     let unblock =  this.authSvc.unblockUser(email);
+     if (unblock.success) {
+        Swal.fire('Éxito', 'Usuario desbloqueado', 'success');
+        this.getUsers();
+      } else{
+        Swal.fire('', unblock.message, 'warning')
+      }
+    } else {
+      let block =  this.authSvc.blockUser(email);
+      if (block.success) {
+        Swal.fire('Éxito', 'Usuario bloqueado', 'success')
+        this.getUsers();
+       } else{
+         Swal.fire('', block.message, 'warning')
+       }
+    }
   }
 }

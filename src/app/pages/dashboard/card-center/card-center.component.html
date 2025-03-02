@@ -103,7 +103,7 @@
   <div class="">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
-        <h1 class="text-base font-normal text-[#455073]">Historial de  transacciones</h1>
+        <h1 class="text-base font-normal ">Historial de  transacciones</h1>
       </div>
     </div>
     <div class="mt-8 flow-root px-6">
@@ -112,22 +112,22 @@
           <table class="min-w-full divide-y divide-gray-300">
             <thead>
               <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-center text-sm font-semibold text-gray-900 sm:pl-3">ID</th>
-                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Fecha</th>
-                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Wallet</th>
-                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Tipo</th>
-                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Monto</th>
-                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Estado</th>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-center text-sm font-semibold  sm:pl-3">ID</th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold ">Fecha</th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold ">Wallet</th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold ">Tipo</th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold ">Monto</th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold ">Estado</th>
 
               </tr>
             </thead>
             <tbody class="bg-white">
               <tr *ngFor="let t of transactions" class=" text-center">
-                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">{{t.id | slice:0:10}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ t.transactionDate | date:'medium' }}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{t?.walletAddress}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{t.reason}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{t.amount | currency}}</td>
+                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium  sm:pl-3">{{t.id | slice:0:10}}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm ">{{ t.transactionDate | date:'medium' }}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm ">{{t?.walletAddress}}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm ">{{t.reason}}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm ">{{t.amount | currency}}</td>
                 <td class="whitespace-nowrap px-3 py-4  ">
                   <span class="bg-green-100 text-green-500 text-sm border-green-500 rounded-2xl px-7 py-2">
                     Exitosa

@@ -1,7 +1,7 @@
 
   <div class="max-w-4xl lg:px-8 px-6 mb-12">
     <div class="relative">
-      <input type="search" class=" rounded-2xl w-full text-black px-4 py-2.5" placeholder="Buscar">
+      <input [ngClass]="isDarkBoolean ? 'bg-[#181818] text-white' : 'bg-white text-[#455073]'" type="search" class=" rounded-2xl w-full  px-4 py-2.5" placeholder="Buscar">
       <div class="absolute right-5 top-1.5">
           <div class="bg-[#FBBC30] rounded-full p-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
@@ -17,7 +17,7 @@
       <div class="card ">
           <img src="assets/images/tutorial.png" class="w-full h-auto" alt="">
           <div class="flex justify-between items-center mt-3 ">
-            <p class="text-[#455073] font-semibold text-base">Recargar</p>
+            <p class=" font-semibold text-base">Recargar</p>
             <div class="bg-[#FBBC30] rounded-full p-2">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                 <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
@@ -28,7 +28,7 @@
       <div class="card ">
           <img src="assets/images/tutorial.png" class="w-full h-auto" alt="">
           <div class="flex justify-between items-center mt-3 ">
-            <p class="text-[#455073] font-semibold text-base">Comprar</p>
+            <p class=" font-semibold text-base">Comprar</p>
             <div class="bg-[#FBBC30] rounded-full p-2">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                 <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
@@ -39,7 +39,7 @@
       <div class="card ">
           <img src="assets/images/tutorial.png" class="w-full h-auto" alt="">
           <div class="flex justify-between items-center mt-3 ">
-            <p class="text-[#455073] font-semibold text-base">Retirar</p>
+            <p class=" font-semibold text-base">Retirar</p>
             <div class="bg-[#FBBC30] rounded-full p-2">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                 <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
@@ -50,7 +50,7 @@
       <div class="card ">
           <img src="assets/images/tutorial.png" class="w-full h-auto" alt="">
           <div class="flex justify-between items-center mt-3 ">
-            <p class="text-[#455073] font-semibold text-base">Convertir</p>
+            <p class=" font-semibold text-base">Convertir</p>
             <div class="bg-[#FBBC30] rounded-full p-2">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                 <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
@@ -61,7 +61,7 @@
       <div class="card ">
           <img src="assets/images/tutorial.png" class="w-full h-auto" alt="">
           <div class="flex justify-between items-center mt-3 ">
-            <p class="text-[#455073] font-semibold text-base">Solicitar tarjeta</p>
+            <p class=" font-semibold text-base">Solicitar tarjeta</p>
             <div class="bg-[#FBBC30] rounded-full p-2">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                 <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
@@ -72,7 +72,7 @@
       <div class="card ">
           <img src="assets/images/tutorial.png" class="w-full h-auto" alt="">
           <div class="flex justify-between items-center mt-3 ">
-            <p class="text-[#455073] font-semibold text-base">Congelar tarjeta</p>
+            <p class=" font-semibold text-base">Congelar tarjeta</p>
             <div class="bg-[#FBBC30] rounded-full p-2">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                 <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />

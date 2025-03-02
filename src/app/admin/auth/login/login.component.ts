@@ -28,7 +28,7 @@ export class LoginComponent {
     if (login.success == true && login.role === 1) {
       this.router.navigate(['/admin/dashboard']);
     } else {
-      Swal.fire('','Credenciales incorrectas. Inténtalo de nuevo.', 'error');
+      Swal.fire('',login.message, 'error');
     };
   };
 }

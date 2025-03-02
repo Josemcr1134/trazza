@@ -6,7 +6,7 @@
   <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
     <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
 
-      <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+      <div [ngClass]="isDarkBoolean ? 'bg-[#181818] text-white' : 'bg-white text-[#455073]'"  class="relative transform overflow-hidden rounded-lg  px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
             <div class="badge flex items-center justify-between mb-4">
               <p class="text-[#455073] font-bold text-base">Recargar tarjeta</p>
               <button (click)="goAway()"  class="border-2 border-[#455073] rounded-md text-[#455073]">
@@ -50,14 +50,14 @@
             </div>
 
             <div class="mb-4">
-              <label for="number" class="block text-base font-bold text-[#7B87AD] text-center">Cantidad a recargar</label>
+              <label for="number" class="block text-base font-bold  text-center">Cantidad a recargar</label>
               <div class="mt-2">
-                <input  [(ngModel)]="amount" type="number" name="number" id="number" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7b87ad]  focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" placeholder="Ingresa el saldo a recargar">
+                <input [ngClass]="isDarkBoolean ? 'bg-gray-950 text-white' : 'bg-gray-100 text-[#455073]'"  [(ngModel)]="amount" type="number" name="number" id="number" class="block w-full rounded-3xl  px-3 py-1.5 text-base   focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" placeholder="Ingresa el saldo a recargar">
               </div>
             </div>
             <div class="mb-4 flex items-center gap-x-4">
-              <label for="text" class="block text-base font-bold text-[#7B87AD] text-center">Wallet</label>
-              <input [(ngModel)]="walletAddress" type="text" name="text" id="text" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7b87ad]  focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" placeholder="Ingresa la wallet de procedencia">
+              <label for="text" class="block text-base font-bold  text-center">Wallet</label>
+              <input [ngClass]="isDarkBoolean ? 'bg-gray-950 text-white' : 'bg-gray-100 text-[#455073]'" [(ngModel)]="walletAddress" type="text" name="text" id="text" class="block w-full rounded-3xl  px-3 py-1.5 text-base   focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" placeholder="Ingresa la wallet de procedencia">
             </div>
             <button (click)="recharge()" class="btn-primary mb-3 cursor-pointer" >Recargar tarjeta</button>
       </div>

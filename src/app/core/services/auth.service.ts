@@ -81,22 +81,33 @@ export class AuthService {
     this.tempUser = {};
 }
 
-  login(email: string, password: string): {success:boolean, role:number} {
+  login(email: string, password: string): {success:boolean, role:number, message:string} {
     const users = this.loadUsersFromLocalStorage();
     const user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
         // Guarda solo el email del usuario autenticado en el localStorage
-        localStorage.setItem('currentUserEmail', user.email);
-        return {
-          success:true,
-          role:user.role
-        };
+        if (user.isBlocked) {
+          return {
+            success:false,
+            role:1,
+            message:'Cuenta bloqueada'
+          }
+        } else {
+          localStorage.setItem('currentUserEmail', user.email);
+          return {
+            success:true,
+            role:user.role,
+            message:'logueado'
+          };
+        }
+    } else {
+      return {
+        success:false,
+        role:1,
+        message:'Credenciales inválidas'
+      };
     }
-    return {
-      success:false,
-      role:1
-    };
   }
 
   // Cerrar sesión
@@ -291,7 +302,8 @@ export class AuthService {
           address:'',
           phone:'',
           country:'',
-          registrationDate : new Date().toISOString()
+          registrationDate : new Date().toISOString(),
+          isBlocked: false
       };
 
       // Inicializar tarjetas y wallet
@@ -359,6 +371,96 @@ export class AuthService {
     return false
   }
 
+  blockUser(userEmail: string) {
+    let users = this.loadUsersFromLocalStorage()
 
+    const adminUser = this.getCurrentUser();
+    let targetUser = users.find(u => u.email === userEmail);
+
+    if (!adminUser || adminUser.role !== 1) {
+      console.warn("No tienes permiso para bloquear usuarios.");
+      return {
+        success: false,
+        message: "No tienes permiso para bloquear usuarios."
+      }
+    }
+
+    if (!targetUser) {
+      return {
+        success: false,
+        message:"Usuario no encontrado."
+      };
+    }
+    targetUser.isBlocked = true;
+    this.updateCurrentUser(targetUser);
+    console.log(`Usuario ${targetUser.email} bloqueado.`);
+    return {
+      success:true,
+      message:'Usuario bloqueado'
+    }
+  }
+
+  // ✅ Desbloquear usuario (solo admin)
+  unblockUser(userEmail: string) {
+    let users = this.loadUsersFromLocalStorage()
+    const adminUser = this.getCurrentUser();
+    let targetUser = users.find(u => u.email === userEmail);
+
+    if (!adminUser || adminUser.role !== 1) {
+      return {
+        success: false,
+        message: "No tienes permiso para bloquear usuarios."
+      }
+    }
+
+    if (!targetUser) {
+      return {
+        success: false,
+        message:"Usuario no encontrado."
+      }
+    }
+    targetUser.isBlocked = false;
+    this.updateCurrentUser(targetUser);
+    console.log(`Usuario ${targetUser.email} desbloqueado.`);
+    return {
+      success:true,
+      message:'Usuario desbloqueado'
+    }
+  }
+
+  editUser(email: string, updatedData: Partial<User>) {
+    const currentUser = this.getCurrentUser();
+    let users = this.loadUsersFromLocalStorage();
+
+    let targetUser = users.find(u => u.email === email);
+    if (!targetUser) {
+      return {
+        message: "Usuario no encontrado.",
+        success:false
+      };
+    }
+
+    // Verificar permisos: el usuario solo puede editarse a sí mismo, el admin a todos
+    if (currentUser?.role !== 1 && currentUser?.email !== email) {
+      return {
+        message: "No tienes permiso para editar este usuario.",
+        success:false
+      };
+    }
+
+    // Solo actualizar los campos permitidos
+    targetUser.fullName = updatedData.fullName ?? targetUser.fullName;
+    targetUser.address = updatedData.address ?? targetUser.address;
+    targetUser.phone = updatedData.phone ?? targetUser.phone;
+    targetUser.country = updatedData.country ?? targetUser.country;
+
+    // Guardar cambios en localStorage
+    this.saveUsersToLocalStorage(users);
+    console.log(`Usuario ${targetUser.email} actualizado.`);
+    return {
+      message:"Usuario editado",
+      success:true
+    };
+  }
 
 }

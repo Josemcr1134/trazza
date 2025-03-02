@@ -1,5 +1,4 @@
 .sidebar{
-  background: white;
   box-shadow: 0px 10px 30px 0px #7883A84D;
   border-radius: 28px;
 }
@@ -14,7 +13,6 @@
 }
 
 .sidebar-item{
-  color: #455073;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;

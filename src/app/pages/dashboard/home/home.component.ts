@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { AddBalanceComponent } from '../../../shared/add-balance/add-balance.component';
 import { TransferBalanceComponent } from '../../../shared/transfer-balance/transfer-balance.component';
 import Swal from 'sweetalert2';
+import { ThemeService } from '../../../core/services/theme.service';
 
 @Component({
   selector: 'app-home',
@@ -41,10 +42,17 @@ export class HomeComponent {
       balance:0
     },
     role:2,
-    registrationDate:''
+    registrationDate:'',
+    isBlocked: false
+
   } ;
 
-  constructor(private userService: AuthService) {
+  public isDarkMode:boolean = false;
+  constructor(private userService: AuthService, private themeSvc:ThemeService) {
+    this.themeSvc.isDarkMode$.subscribe((isDark:any) => {
+      this.isDarkMode = isDark;
+      console.log(this.isDarkMode)
+    });
     this.refresh(true)
   };
 
@@ -120,7 +128,9 @@ export class HomeComponent {
         balance:0
       },
       role:2,
-      registrationDate:''
+      registrationDate:'',
+      isBlocked: false
+
     } ;
   };
 

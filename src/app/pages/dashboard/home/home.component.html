@@ -1,20 +1,20 @@
-<div class="grid lg:grid-cols-5 grid-cols-1 gap-8 ">
+<div [ngClass]="isDarkMode ? 'bg-[#181818] text-white' : 'bg-white text-[#455073]'" class="grid bg-transparent lg:grid-cols-5 grid-cols-1 gap-8 ">
     <div class="lg:col-span-3">
       <div class="account-balance-wrapper flex-wrap">
         <div class="text-end">
-            <p class="text-2xl text-[#455073] font-semibold mb-3">Saldo de cuenta</p>
-            <p class="text-base text-[#455073] font-normal">
+            <p class="text-2xl  font-semibold mb-3">Saldo de cuenta</p>
+            <p class="text-base  font-normal">
               <!-- Cuenta abierta el <strong> 14/01/25</strong> -->
             </p>
         </div>
         <div class="border-yellow-500 border-4 rounded-full h-full w-auto py-20 px-10  text-center">
-          <p class="text-base text-[#455073] font-normal">
+          <p class="text-base  font-normal">
             Total
           </p>
-          <p class="text-3xl font-bold text-[#455073]">
+          <p class="text-3xl font-bold ">
             {{currentUser.cards[0].balance + currentUser.cards[1].balance | currency }}
           </p>
-          <p class="text-base text-[#455073] font-normal">
+          <p class="text-base  font-normal">
             USD
           </p>
         </div>
@@ -78,10 +78,10 @@
           <img src="assets/icons/up.png" alt="">
       </div>
       <div>
-        <p class="text-xs text-nowrap lg:text-sm text-[#455073] font-normal">
+        <p class="text-xs text-nowrap lg:text-sm  font-normal">
           Ingresos totales  <strong> /mes</strong>
         </p>
-        <p class="text-lg lg:text-2xl text-[#455073] font-semibold "> {{getTotalRecharges().total | currency}}</p>
+        <p class="text-lg lg:text-2xl  font-semibold "> {{getTotalRecharges().total | currency}}</p>
       </div>
     </div>
     <div class="stat-card gap-x-3">
@@ -89,10 +89,10 @@
           <img src="assets/icons/down.png" alt="">
       </div>
       <div>
-        <p class="text-xs text-nowrap lg:text-sm text-[#455073] font-normal">
+        <p class="text-xs text-nowrap lg:text-sm  font-normal">
           Egresos totales  <strong> /mes</strong>
         </p>
-        <p class="text-lg lg:text-2xl text-[#455073] font-semibold ">-{{getTotalTransfers().total | currency}}</p>
+        <p class="text-lg lg:text-2xl  font-semibold ">-{{getTotalTransfers().total | currency}}</p>
       </div>
     </div>
     <div class="stat-card gap-x-3">
@@ -100,10 +100,10 @@
           <img src="assets/icons/equal.png" alt="">
       </div>
       <div>
-        <p class="text-xs text-nowrap lg:text-sm text-[#455073] font-normal">
+        <p class="text-xs text-nowrap lg:text-sm  font-normal">
           Transacciones  <strong> /mes</strong>
         </p>
-        <p class="text-lg lg:text-2xl text-[#455073] font-semibold ">{{currentUser.transactions.length }}</p>
+        <p class="text-lg lg:text-2xl  font-semibold ">{{currentUser.transactions.length }}</p>
       </div>
     </div>
 
@@ -114,7 +114,7 @@
   <div class="">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
-        <h1 class="text-base font-normal text-[#455073]">Últimas transacciones</h1>
+        <h1 class="text-base font-normal ">Últimas transacciones</h1>
       </div>
       <!-- <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
         <button type="button" class="btn-dark" style="padding: 5px 15px !important;">Ver todas</button>
@@ -126,20 +126,20 @@
           <table class="min-w-full divide-y divide-gray-300">
             <thead>
               <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-center text-sm font-semibold text-gray-900 sm:pl-3">ID</th>
-                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Fecha</th>
-                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Tipo</th>
-                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Monto</th>
-                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Estado</th>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-center text-sm font-semibold 0 sm:pl-3">ID</th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold 0">Fecha</th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold 0">Tipo</th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold 0">Monto</th>
+                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold 0">Estado</th>
 
               </tr>
             </thead>
             <tbody class="bg-white">
               <tr *ngFor="let t of currentUser.transactions" class=" text-center">
                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3">{{t.id | slice:0:10}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{t.transactionDate}} </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{t.reason}}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{t.amount | currency}}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm ">{{t.transactionDate}} </td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm ">{{t.reason}}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm ">{{t.amount | currency}}</td>
                 <td class="whitespace-nowrap px-3 py-4  ">
                   <span class="bg-green-100 text-green-500 text-sm border-green-500 rounded-2xl px-7 py-2">
                     Exitosa

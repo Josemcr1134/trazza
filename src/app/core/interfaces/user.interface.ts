@@ -34,7 +34,8 @@ export interface User {
   transactions: Transaction[];
   wallet:Wallet,
   role: number; // 1 = Admin, 2 = Usuario normal.
-  registrationDate:string
+  registrationDate:string,
+  isBlocked:boolean
 }
 
 export interface TransactionWithUser extends Transaction {

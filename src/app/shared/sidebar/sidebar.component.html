@@ -1,6 +1,6 @@
 <div class="hidden lg:fixed lg:inset-y-0 lg:z-50  lg:flex lg:top-10 lg:bottom-10 inset-x-5 lg:w-72 lg:flex-col">
   <!-- Sidebar component, swap this element with another sidebar if you like -->
-  <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white  py-8 sidebar" >
+  <div [ngClass]="isDarkMode ? 'bg-[#181818] text-white' : 'bg-white text-[#455073]'" class="flex grow flex-col gap-y-5 overflow-y-auto   py-8 sidebar" >
     <div class="px-5">
       <div class="flex h-16 shrink-0 mb-7 items-center justify-center">
         <img class="h-12 object-contain w-20" src="assets/images/logo-black.png" alt="Your Company">
@@ -10,7 +10,7 @@
           <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" class="rounded-2xl w-14 h-14 object-cover" alt="">
         </div>
         <div class="text-center col-span-2">
-            <p class="font-normal text-xs text-[#171717] mb-2">{{currentUser?.fullName}}</p>
+            <p class="font-normal text-xs  mb-2">{{currentUser?.fullName}}</p>
             <button [routerLink]="['/dashboard/my-profile']" class="btn-dark">Ver perfil</button>
         </div>
       </div>
@@ -21,31 +21,36 @@
           <ul role="list" class="-mx-2 space-y-1 ">
             <li class="group flex gap-x-6 py-3 items-center p-2 text-sm/6">
                 <a [routerLink]="['/dashboard/home']" routerLinkActive="active"  class=" sidebar-icon flex items-center justify-center">
-                    <img src="assets/icons/home.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    <img *ngIf="!isDarkMode" src="assets/icons/home.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    <img *ngIf="isDarkMode" src="assets/icons/home-white.png" class="w-auto h-full p-1.5 object-contain" alt="">
                 </a>
                 <span class="sidebar-item">Inicio</span>
             </li>
             <li class="group flex gap-x-6 py-3 items-center p-2 text-sm/6">
                 <a [routerLink]="['/dashboard/card-center']" routerLinkActive="active" class="sidebar-icon flex items-center justify-center">
-                    <img src="assets/icons/credit-card.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    <img *ngIf="!isDarkMode" src="assets/icons/credit-card.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    <img *ngIf="isDarkMode" src="assets/icons/credit-card-white.png" class="w-auto h-full p-1.5 object-contain" alt="">
                 </a>
                 <span class="sidebar-item">Centro de tarjetas</span>
             </li>
             <li class="group flex gap-x-6 py-3 items-center p-2 text-sm/6">
                 <a  [routerLink]="['/dashboard/recharge-wallet']"  routerLinkActive="active"   class="sidebar-icon flex items-center justify-center">
-                    <img src="assets/icons/wallet.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    <img *ngIf="!isDarkMode" src="assets/icons/wallet.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    <img *ngIf="isDarkMode" src="assets/icons/wallet-white.png" class="w-12 h-10 object-contain  " alt="">
                 </a>
                 <span class="sidebar-item">Recargar Wallet</span>
             </li>
             <li class="group flex gap-x-6 py-3 items-center p-2 text-sm/6">
                 <a [routerLink]="['/dashboard/tutorials']"  routerLinkActive="active"  class="sidebar-icon flex items-center justify-center">
-                    <img src="assets/icons/tutorials.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    <img *ngIf="!isDarkMode" src="assets/icons/tutorials.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    <img *ngIf="isDarkMode" src="assets/icons/tutorials-white.png" class="w-auto h-full p-1.5 object-contain" alt="">
                 </a>
                 <span class="sidebar-item">Tutoriales</span>
             </li>
             <li   class="group flex gap-x-6 py-3 items-center p-2 text-sm/6">
                 <a [routerLink]="['/dashboard/support']"  routerLinkActive="active"  class="sidebar-icon flex items-center justify-center">
-                    <img src="assets/icons/support.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    <img *ngIf="!isDarkMode" src="assets/icons/support.png" class="w-auto h-full p-1.5 object-contain" alt="">
+                    <img *ngIf="isDarkMode" src="assets/icons/support-white.png" class="w-auto h-full p-1.5 object-contain" alt="">
                 </a>
                 <span class="sidebar-item">Soporte</span>
             </li>

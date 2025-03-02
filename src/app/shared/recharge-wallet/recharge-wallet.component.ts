@@ -3,12 +3,15 @@ import Swal from 'sweetalert2';
 import { Card } from '../../core/interfaces/user.interface';
 import { AuthService } from '../../core/services/auth.service';
 import { FormsModule } from '@angular/forms';
+import { ThemeService } from '../../core/services/theme.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-recharge-wallet-balance',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   templateUrl: './recharge-wallet.component.html',
   styleUrl: './recharge-wallet.component.css'
@@ -19,8 +22,12 @@ export class RechargeWalletBalanceComponent {
   reason: string = 'Recarga de wallet';
   walletAddress: string = '';
 
-  constructor(private userService: AuthService) {}
-
+  isDarkBoolean:boolean = false;
+  constructor(private themeSvc:ThemeService, private userService: AuthService) {
+    this.themeSvc.isDarkMode$.subscribe((isDark:any) => {
+      this.isDarkBoolean = isDark;
+    });
+  }
   recharge() {
     if (this.amount >= 11 && this.amount <= 10000 ) {
 

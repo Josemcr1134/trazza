@@ -4,6 +4,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { Card } from '../../core/interfaces/user.interface';
 import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'app-add-balance',
@@ -25,12 +26,17 @@ export class AddBalanceComponent {
   amount: number = 0;
   reason: string = 'Recarga de tarjeta física';
   walletAddress: string = '';
-
-  constructor(private userService: AuthService) {
+  public isDarkBoolean:boolean = false;
+  constructor(private themeSvc:ThemeService, private userService: AuthService) {
+    this.themeSvc.isDarkMode$.subscribe((isDark:any) => {
+      this.isDarkBoolean = isDark;
+      console.log(this.isDarkBoolean)
+    });
     const user = this.userService.getCurrentUser();
     this.cards = user?.cards || [];
     console.log(user)
-  }
+  };
+
 
   recharge() {
 

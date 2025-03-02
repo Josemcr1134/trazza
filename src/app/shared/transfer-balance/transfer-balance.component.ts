@@ -5,6 +5,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { Card } from '../../core/interfaces/user.interface';
 import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'app-transfer-balance',
@@ -27,11 +28,13 @@ export class TransferBalanceComponent {
   amount: number = 0;
   reason: string = '';
   walletAddress: string = '';
-
-  constructor(private userService: AuthService) {
+  isDarkBoolean:boolean = false;
+  constructor(private themeSvc:ThemeService, private userService: AuthService) {
+    this.themeSvc.isDarkMode$.subscribe((isDark:any) => {
+      this.isDarkBoolean = isDark;
+    });
     const user = this.userService.getCurrentUser();
     this.cards = user?.cards || [];
-    console.log(user)
   }
 
   transfer() {

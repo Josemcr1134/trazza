@@ -1,0 +1,51 @@
+
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+
+  <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+  <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+      <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+            <div class="badge flex items-center justify-between mb-6">
+              <p class="text-[#455073] font-bold text-base">Editar usuario</p>
+              <button (click)="goAway()"  class="border-2 border-[#455073] rounded-md text-[#455073]">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div class="">
+              <label for="full-name" class="block text-base font-bold text-[#7B87AD] text-center">Nombre completo</label>
+              <div class="mt-2">
+                <input  [(ngModel)]="data.fullName" type="text" name="full-name" id="full-name" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7b87ad]  focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" placeholder="Ingresa el nombre completo">
+              </div>
+            </div>
+             <hr class="my-4">
+            <div class="mb-4">
+              <label for="phone" class="block text-base font-bold text-[#7B87AD] text-left">Teléfono</label>
+              <div class="mt-2">
+                <input  [(ngModel)]="data.phone" type="text" name="phone" id="phone" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7b87ad]  focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" placeholder="Ingresa el correo electrónico">
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="address" class="block text-base font-bold text-[#7B87AD] text-left">Dirección</label>
+              <div class="mt-2">
+                <input  [(ngModel)]="data.address" type="text" name="address" id="address" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7b87ad]  focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" placeholder="Ingresa la contraseña">
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="address" class="block text-base font-bold text-[#7B87AD] text-left">País</label>
+              <div class="mt-2">
+                <input  [(ngModel)]="data.country" type="text" name="address" id="address" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7b87ad]  focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" placeholder="Ingresa la contraseña">
+              </div>
+            </div>
+
+
+
+            <button (click)="editUser()" class="btn-primary mb-3 cursor-pointer" >Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
