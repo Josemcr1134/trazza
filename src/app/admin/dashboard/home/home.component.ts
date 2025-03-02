@@ -19,6 +19,7 @@ import { series } from "./data"
 import { AuthService } from '../../../core/services/auth.service';
 import { Transaction, TransactionWithUser, User } from '../../../core/interfaces/user.interface';
 import { CommonModule } from '@angular/common';
+import { CreateAdminUserComponent } from '../../shared/create-admin-user/create-admin-user.component';
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
   chart: ApexChart | any;
@@ -47,7 +48,8 @@ export type ChartOptions2 = {
     FormsModule,
     ReactiveFormsModule,
     NgApexchartsModule,
-    CommonModule
+    CommonModule,
+    CreateAdminUserComponent
 
   ],
   templateUrl: './home.component.html',
@@ -60,12 +62,9 @@ export class HomeComponent {
   public chartOptions2!: Partial<ChartOptions2>;
   public transactions:TransactionWithUser[] = [];
   public users:User[] = [];
+  public showCreateUserModal:boolean = false;
   constructor(private authSvc:AuthService) {
-
-
-
-    this.getAllTransactionsWithUserInfo();
-    this.getUsers();
+    this.refresh()
   }
 
 
@@ -206,6 +205,10 @@ export class HomeComponent {
     };
   }
 
-
+  refresh(){
+    this.getAllTransactionsWithUserInfo();
+    this.getUsers();
+    this.showCreateUserModal = false;
+  };
 
 }

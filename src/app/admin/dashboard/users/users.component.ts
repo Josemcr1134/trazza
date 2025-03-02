@@ -40,6 +40,7 @@ export class UsersComponent {
   getUsers(){
     this.users =  this.authSvc.loadUsersFromLocalStorage();
     this.filteredUsers = this.users;
+    this.showUserDetail = false;
     console.log(this.users)
   };
 

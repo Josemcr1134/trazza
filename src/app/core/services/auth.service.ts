@@ -200,6 +200,7 @@ export class AuthService {
             number: this.generateCardNumber(),
             expDate: this.generateExpDate(),
             cvc: this.generateCVC(),
+            isFrozen:false
         },
         {
             id: uuidv4(),
@@ -208,6 +209,7 @@ export class AuthService {
             number: this.generateCardNumber(),
             expDate: this.generateExpDate(),
             cvc: this.generateCVC(),
+            isFrozen:false
         },
     ];
     user.transactions = [];
@@ -271,39 +273,92 @@ export class AuthService {
     }
   };
 
-  initializeAdminUser() {
+  initializeAdminUser(email:string, password:string, fullName:string ):boolean {
     const users = this.loadUsersFromLocalStorage();
 
-    // Verificar si ya existe un usuario administrador
-    const adminExists = users.some(user => user.role === 1);
-
-    if (!adminExists) {
-        const adminUser: User = {
-            email: 'admin@admin.com',
-            password: 'admin123',
-            cards: [],
-            transactions: [],
-            wallet: { id: '', name: '', balance: 0 },
-            role: 1,
-            fullName:'Administrador del sistema',
-            address:'',
-            phone:'',
-            country:'',
-            registrationDate : new Date().toISOString()
-        };
-
-        // Inicializar tarjetas y wallet
-        this.initializeUser(adminUser, true);
-
-        // Guardar el usuario administrador en el localStorage
-        users.push(adminUser);
-        this.saveUsersToLocalStorage(users);
-
-        console.log('Usuario administrador creado automáticamente.');
+    if (this.isEmailTaken(email)) {
+        return false;
     } else {
-        console.log('El usuario administrador ya existe.');
+      // Verificar si ya existe un usuario administrador
+      const adminUser: User = {
+          email: email,
+          password: password,
+          cards: [],
+          transactions: [],
+          wallet: { id: '', name: '', balance: 0 },
+          role: 1,
+          fullName:fullName,
+          address:'',
+          phone:'',
+          country:'',
+          registrationDate : new Date().toISOString()
+      };
+
+      // Inicializar tarjetas y wallet
+      this.initializeUser(adminUser, true);
+
+      // Guardar el usuario administrador en el localStorage
+      users.push(adminUser);
+      this.saveUsersToLocalStorage(users);
+      return true
     }
-}
+  };
+
+  // ❄️ Congelar una tarjeta (puede hacerlo el usuario o un administrador)
+  freezeCard(userEmail: string, cardId: string) {
+    let users = this.loadUsersFromLocalStorage()
+    const adminUser = this.getCurrentUser(); // Usuario actual (quien ejecuta la acción)
+    let targetUser = users.find(u => u.email === userEmail); // Usuario dueño de la tarjeta
+
+    if (!adminUser || !targetUser) {
+      console.warn("Usuario no encontrado.");
+      return false;
+    }
+
+    // Solo el usuario dueño o un administrador pueden congelar la tarjeta
+    if (adminUser.email !== targetUser.email && adminUser.role !== 1) {
+      console.warn("No tienes permiso para congelar esta tarjeta.");
+      return false;
+    }
+
+    const card = targetUser.cards.find(c => c.id === cardId);
+    if (card) {
+      card.isFrozen = true;
+      this.updateCurrentUser(targetUser);
+      console.log(`Tarjeta ${cardId} congelada por ${adminUser.role === 1 ? 'un administrador' : 'el usuario'}.`);
+      return true;
+    }
+
+    return false
+  }
+
+  // 🔓 Descongelar una tarjeta (mismas reglas que congelar)
+  unfreezeCard(email: string, cardId: string) {
+    let users = this.loadUsersFromLocalStorage()
+
+    const adminUser = this.getCurrentUser();
+    let targetUser = users.find(u => u.email === email);
+
+    if (!adminUser || !targetUser) {
+      console.warn("Usuario no encontrado.");
+      return false;
+    }
+
+    if (adminUser.email !== targetUser.email && adminUser.role !== 1) {
+      console.warn("No tienes permiso para descongelar esta tarjeta.");
+      return false;
+    }
+
+    const card = targetUser.cards.find(c => c.id === cardId);
+    if (card) {
+      card.isFrozen = false;
+      this.updateCurrentUser(targetUser);
+      console.log(`Tarjeta ${cardId} descongelada por ${adminUser.role === 1 ? 'un administrador' : 'el usuario'}.`);
+      return true
+    }
+    return false
+  }
+
 
 
 }

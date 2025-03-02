@@ -4,7 +4,8 @@ export interface Card {
   balance: number;
   number: number;
   expDate:string,
-  cvc:number
+  cvc:number,
+  isFrozen:boolean
 }
 export interface Wallet {
   id: string;

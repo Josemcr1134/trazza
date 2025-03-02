@@ -19,11 +19,11 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
   constructor(private authSvc:AuthService,private router: Router) {
-    this.authSvc.initializeAdminUser();
+    this.authSvc.initializeAdminUser('admin@admin.com', "admin123", "Administrador del sistema" );
   }
 
   onLogin() {
-      let login = this.authSvc.login(this.email, this.password);
+  let login = this.authSvc.login(this.email, this.password);
       console.log(login)
     if (login.success == true && login.role === 1) {
       this.router.navigate(['/admin/dashboard']);

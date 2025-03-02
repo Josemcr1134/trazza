@@ -29,13 +29,18 @@
                     <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule="evenodd" />
                   </svg>
                 </a>
-                <div class="flex justify-end gap-x-3">
+                <div class="flex items-center justify-end gap-x-3">
+                  <div *ngIf="!currentUser.cards[0].isFrozen" class="flex justify-end gap-x-3">
                     <button (click)="chooseCard(currentUser.cards[0].id, currentUser.cards[0].type, currentUser.cards[0].balance, true)" class="btn-outline-light">
                       Recargar
                     </button>
                     <button (click)="chooseCard(currentUser.cards[0].id, currentUser.cards[0].type, currentUser.cards[0].balance, false)" class="btn-outline-light">
                       Transferir
                     </button>
+                  </div>
+                  <button [disabled]="isLoading" (click)="changeCardStatus(currentUser.cards[0].isFrozen, currentUser.cards[0].id)" [ngClass]="{'bg-purple-300': currentUser.cards[0].isFrozen, 'bg-purple-100': !currentUser.cards[0].isFrozen}" class=" flex justify-center items-center  h-8 w-8 rounded-full p-2">
+                    <img src="assets/icons/freeze.png" class="w-full h-auto" alt="">
+                  </button>
                 </div>
             </div>
         </div>
@@ -64,20 +69,29 @@
               </div>
               <p class="text-sm text-black text-start font-normal">{{currentUser.cards[1].cvc }}</p>
             </div>
-            <div class="grid grid-cols-3 w-full items-center gap-x-3">
-                <a  (click)="showCardData('virtual')" class="btn-dark flex items-center  justify-around gap-x-2 cursor-pointer">
+            <div class="flex justify-between w-full items-center gap-x-3">
+              <div>
+
+                <a  (click)="showCardData('virtual')" class="btn-dark flex items-center  w-min  justify-around gap-x-2 cursor-pointer">
                   Ver datos
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
                     <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
                     <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule="evenodd" />
                   </svg>
                 </a>
-                <button  (click)="chooseCard(currentUser.cards[1].id, currentUser.cards[1].type, currentUser.cards[1].balance, true)" class="btn-outline-dark text-base">
+              </div>
+              <div class="flex justify-end items-center gap-x-3">
+
+                <button *ngIf="!currentUser.cards[1].isFrozen"   (click)="chooseCard(currentUser.cards[1].id, currentUser.cards[1].type, currentUser.cards[1].balance, true)" class="btn-outline-dark text-base">
                   Recargar
                 </button>
-                <button  (click)="chooseCard(currentUser.cards[1].id, currentUser.cards[1].type, currentUser.cards[1].balance, false)" class="btn-outline-dark text-base">
+                <button *ngIf="!currentUser.cards[1].isFrozen"   (click)="chooseCard(currentUser.cards[1].id, currentUser.cards[1].type, currentUser.cards[1].balance, false)" class="btn-outline-dark text-base">
                   Transferir
                 </button>
+                <button [disabled]="isLoading" (click)="changeCardStatus(currentUser.cards[1].isFrozen, currentUser.cards[1].id)" [ngClass]="{'bg-purple-300': currentUser.cards[1].isFrozen, 'bg-purple-100': !currentUser.cards[1].isFrozen}" class=" flex justify-center items-center  h-8 w-8 rounded-full p-2">
+                  <img src="assets/icons/freeze.png" class="w-full h-auto" alt="">
+                </button>
+              </div>
             </div>
         </div>
       </div>

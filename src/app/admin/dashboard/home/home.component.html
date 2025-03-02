@@ -1,20 +1,19 @@
-<div class="grid  grid-cols-2 gap-4 mb-8">
-    <!-- <div class="lg:col-span-2">
-      <div class="card">
+<div class="grid  grid-cols-5 gap-4 mb-8">
+    <div class="lg:col-span-2">
+      <div  (click)="showCreateUserModal = !showCreateUserModal" class="card  cursor-pointer">
         <div class="card-image-black">
           <div class="card-overlay">
               <div class="flex w-full justify-between items-center px-4 ">
                   <img src="assets/images/logo.png" class="w-16 h-10 " alt="">
                   <p class="text-white text-sm font-normal">Crear usuario</p>
               </div>
-
           </div>
         </div>
       </div>
-    </div> -->
-    <div class="col-span-2">
+    </div>
+    <div class="col-span-3">
         <div class="bg-white rounded-lg p-2">
-          <div class="grid grid-cols-2 gap-x-2 ">
+          <div class="grid grid-cols-3 gap-x-2 ">
             <div class="metric-wrapper bg-[#E5F9FF]">
               <img class="w-12 h-10 object-cover" src="https://s3-alpha-sig.figma.com/img/77f4/70d1/9682f42aaa021777e7186da4fb917c6e?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=inyEPI3Fo~Ob6Y~qoqBsVFL52pF0uPLGH1JUJdEjkuy9K8QkDmcEA-tLnDCWxzCwLJEH0t609athQCUNN7JXCpU8GAq9YuZbVAEr47pNTVivcjTXPjrWMtKy82UL1v6k49RsnpRqdd0tIYWEOTPpiHH4djOPzlmET6p7irYFU0XXnO3y7G9QxJJr-LyVluVQ-0tBGOparbbpyeRvotkSQ1EAu7JOh9MgVWPCFerVUwCfsS8tbzMXh5oaZSFCn4bGR4GPt8xwN1ziCKJpN3~~89HgQJ41FhKlhd84cw8141LqmJ-7YyKVCk51NjpPd~tJtQFOukiHLiTsODN9nJUpsA__" alt="">
               <div>
@@ -29,13 +28,13 @@
                 <p class="text-sm mb-1 font-bold text-[#455073]">{{users.length}}</p>
               </div>
             </div>
-            <!-- <div class="metric-wrapper bg-[#EAE5FF]">
+             <div class="metric-wrapper bg-[#EAE5FF]">
               <img class="w-12 h-10 object-cover" src="https://s3-alpha-sig.figma.com/img/ee0c/f25c/3cda30bf8cac1158421dcffff1c503dc?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=VrZsqxs0hfsEP1OxoTwp31EFL2ofqmLSLXrgUjB6eQ4ySHZpADcjQV8eUlIEbX5mFdhxwi2MXMmgn1GKbN6-AXMouXry-sc9sdz2vpcwkrMe1cdkrBeU-N8fZH4mZO3AdAimgpZVwQ4pBvmr8bLObZOwvFWaWlbrMDpUoH9-j43JqG0CLkI8-UXB4SObMq-hLoNXaMlHEwvbpNx0yImVAjoflOxEdM8b-ROgxKdFhFic8dBCuH2JRTQvNbTk6oQcFW~OIqE5MQ1dZFwEJsFxiWbMoMtW5RnY4YtMPZcI5RshCPXpzXhikOuwbhUu~bAj8xixhnvIdirLZgPUb5~YyQ__" alt="">
               <div>
                 <p class="text-sm mb-1 font-normal text-[#455073]">Consumos</p>
-                <p class="text-sm mb-1 font-bold text-[#455073]">30,564</p>
+                <p class="text-sm mb-1 font-bold text-[#455073]">0 </p>
               </div>
-            </div> -->
+            </div>
           </div>
         </div>
     </div>
@@ -115,3 +114,6 @@
     </div>
   </div>
 </div>
+
+
+<app-create-admin-user *ngIf="showCreateUserModal" (close)="refresh()" ></app-create-admin-user>

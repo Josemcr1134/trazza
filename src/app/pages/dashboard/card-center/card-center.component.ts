@@ -4,6 +4,7 @@ import { AddBalanceComponent } from '../../../shared/add-balance/add-balance.com
 import { Transaction, User } from '../../../core/interfaces/user.interface';
 import { AuthService } from '../../../core/services/auth.service';
 import { TransferBalanceComponent } from '../../../shared/transfer-balance/transfer-balance.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-card-center',
@@ -67,7 +68,7 @@ export class CardCenterComponent {
     role:2,
     registrationDate:''
   } ;
-
+  public isLoading:boolean = false;
   constructor(private userService: AuthService) {
     this.refresh(true)
     console.log(this.currentUser)
@@ -95,4 +96,27 @@ export class CardCenterComponent {
     }
 
   }
+
+  changeCardStatus(action:boolean, cardId:string){
+    this.isLoading = true;
+    if (action === false) {
+      let success =  this.userService.freezeCard(this.currentUser.email, cardId);
+      if (success) {
+        Swal.fire('Éxito', 'Tarjeta congelada', 'success');
+        this.refresh(true)
+      } else {
+        Swal.fire('Ooops', 'No pudimos congelar la tarjeta', 'info');
+      }
+      this.isLoading = false;
+    } else {
+      let succ =  this.userService.unfreezeCard(this.currentUser.email, cardId);
+      if (succ) {
+        Swal.fire('Éxito', 'Tarjeta descongelada', 'success');
+        this.refresh(true)
+      } else {
+        Swal.fire('Ooops', 'No pudimos descongelar la tarjeta', 'info');
+      }
+      this.isLoading = false;
+    }
+  };
 }

@@ -1,0 +1,56 @@
+
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+
+  <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+  <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+      <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+            <div class="badge flex items-center justify-between mb-6">
+              <p class="text-[#455073] font-bold text-base">Crear usuario</p>
+              <button (click)="goAway()"  class="border-2 border-[#455073] rounded-md text-[#455073]">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div class="">
+              <label for="full-name" class="block text-base font-bold text-[#7B87AD] text-center">Nombre completo</label>
+              <div class="mt-2">
+                <input  [(ngModel)]="fullName" type="text" name="full-name" id="full-name" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7b87ad]  focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" placeholder="Ingresa el nombre completo">
+              </div>
+            </div>
+             <hr class="my-4">
+            <div class="mb-4">
+              <label for="emal" class="block text-base font-bold text-[#7B87AD] text-left">Correo</label>
+              <div class="mt-2">
+                <input  [(ngModel)]="email" type="text" name="emal" id="emal" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7b87ad]  focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" placeholder="Ingresa el correo electrónico">
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="passorword" class="block text-base font-bold text-[#7B87AD] text-left">Contraseña</label>
+              <div class="mt-2">
+                <input  [(ngModel)]="password" type="text" name="passorword" id="passorword" class="block w-full rounded-3xl bg-[#F1F3FA] px-3 py-1.5 text-base text-[#7b87ad]  focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" placeholder="Ingresa la contraseña">
+              </div>
+            </div>
+            <div class="mb-4 ">
+              <label for="rol" class="block text-base font-bold text-[#7B87AD] text-left">Rol</label>
+              <div class="mt-2 w-full">
+                <span class="bg-black text-yellow-500 block rounded-2xl font-bold text-center w-full py-2 px-6 text-base">Administrador</span>
+              </div>
+            </div>
+            <div class="mb-5 border border-[#6B7280] p-3 rounded-lg flex items-start gap-4">
+              <input [(ngModel)]="acceptTerms" type="checkbox" name="terms" id="terms">
+              <p class="text-[#455073] font-normal text-sm -mt-1">
+                Estoy completamente segur&#64; de que quiero que este usuario sea <strong>administrador de VX Card</strong>
+              </p>
+            </div>
+
+
+            <button (click)="createAdmin()" class="btn-primary mb-3 cursor-pointer" >Registrar rol y usuario</button>
+      </div>
+    </div>
+  </div>
+</div>
