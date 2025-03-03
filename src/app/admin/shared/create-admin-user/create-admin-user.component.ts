@@ -24,7 +24,7 @@ export class CreateAdminUserComponent {
   public password:string = '';
   constructor(private authSvc:AuthService){}
   createAdmin(){
-    if (this.acceptTerms == true && this.fullName.length && this.password.length && this.email.length && this.userName.length) {
+    if (this.acceptTerms == true && this.fullName.length && this.password.length && this.email.length ) {
       let create =  this.authSvc.initializeAdminUser(this.email, this.password, this.fullName );
       if (create == true) {
         Swal.fire('', 'Administrador creado', 'success');
@@ -33,6 +33,7 @@ export class CreateAdminUserComponent {
         Swal.fire('', 'Ya existe un usuario con ese correo electrónico', 'warning' )
       }
     } else {
+      console.log()
       Swal.fire('', 'Debes llenar todos los campos del formulario', 'info' )
     };
   };

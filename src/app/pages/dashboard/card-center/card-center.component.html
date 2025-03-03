@@ -121,7 +121,7 @@
 
               </tr>
             </thead>
-            <tbody class="bg-white">
+            <tbody >
               <tr *ngFor="let t of transactions" class=" text-center">
                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium  sm:pl-3">{{t.id | slice:0:10}}</td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm ">{{ t.transactionDate | date:'medium' }}</td>
