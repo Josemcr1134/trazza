@@ -204,27 +204,12 @@ export class AuthService {
   // Crear tarjetas físicas y virtuales al registrar un usuario
   initializeUserCards(user: User) {
     user.cards = [
-        {
-            id: uuidv4(),
-            type: 'physical',
-            balance: 0,
-            number: this.generateCardNumber(),
-            expDate: this.generateExpDate(),
-            cvc: this.generateCVC(),
-            isFrozen:false
-        },
-        {
-            id: uuidv4(),
-            type: 'virtual',
-            balance: 0,
-            number: this.generateCardNumber(),
-            expDate: this.generateExpDate(),
-            cvc: this.generateCVC(),
-            isFrozen:false
-        },
+      { id: uuidv4(), type: 'physical', balance: 0, number: this.generateCardNumber(), expDate: this.generateExpDate(), cvc: this.generateCVC(), activated: false, isFrozen:false },
+      { id: uuidv4(), type: 'virtual', balance: 0, number: this.generateCardNumber(), expDate: this.generateExpDate(), cvc: this.generateCVC(), activated: false, isFrozen:false }
     ];
     user.transactions = [];
   }
+
 
   // Generar un número de tarjeta aleatorio (16 dígitos)
   private generateCardNumber(): number {
@@ -462,5 +447,32 @@ export class AuthService {
       success:true
     };
   }
+
+  activateCard(email: string, cardId: string) {
+    const users = this.loadUsersFromLocalStorage();
+    const user = users.find(u => u.email === email);
+
+    if (!user) {
+      console.warn("Usuario no encontrado.");
+      return false;
+    }
+
+    const card = user.cards.find(c => c.id === cardId);
+    if (!card) {
+      console.warn("Tarjeta no encontrada.");
+      return false;
+    }
+
+    if (card.activated) {
+      console.warn("La tarjeta ya está activada.");
+      return false;
+    }
+
+    card.activated = true;
+    this.saveUsersToLocalStorage(users);
+    console.log(`Tarjeta ${cardId} activada correctamente.`);
+    return true;
+  }
+
 
 }

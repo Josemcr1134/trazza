@@ -5,7 +5,8 @@ export interface Card {
   number: number;
   expDate:string,
   cvc:number,
-  isFrozen:boolean
+  isFrozen:boolean,
+  activated:boolean
 }
 export interface Wallet {
   id: string;
@@ -35,7 +36,7 @@ export interface User {
   wallet:Wallet,
   role: number; // 1 = Admin, 2 = Usuario normal.
   registrationDate:string,
-  isBlocked:boolean
+  isBlocked:boolean,
 }
 
 export interface TransactionWithUser extends Transaction {

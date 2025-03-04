@@ -50,7 +50,6 @@ export class AddBalanceComponent {
   }
   goAway(){
     this.close.emit(true)
-    console.log(close)
   }
 
 

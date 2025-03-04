@@ -21,7 +21,6 @@ export class LoginComponent {
 
   constructor(private userService: AuthService, private router: Router) {
     this.getUsers()
-
   }
 
   onLogin() {

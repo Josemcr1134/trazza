@@ -1,0 +1,36 @@
+
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+
+  <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+  <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+    <div class="flex min-h-full items-end justify-center  text-center sm:items-center sm:p-0">
+
+      <div [ngClass]="isDarkBoolean ? 'bg-[#181818] text-white' : 'bg-white text-[#455073]'"  class="relative transform overflow-hidden rounded-lg  pb-4  text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm ">
+            <div class="relative w-full min-h-36 mb-5">
+              <img class="img-thumbnail rounded-b-3xl" src="https://s3-alpha-sig.figma.com/img/1ac2/a674/6ee05ccdb807aabc25ac7a435f87d806?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Fyl2FSbHf8TvM5XUbQEZTH4aGPpBjKuYFZsHD-6h5Ikiyf-9nDrfCaNH~WdtGcKn41C2BkImfAyc5d~hr1ahQWWzjqghGiNy0DWGrAlr-2tLl7MzZwkk5ETT-rpS27Pc60LDKaJkmMTxRvbTt3KSbGRPI4ZUQe-FhN3gv9Yz54PijYbuq7zAheyxyUDjk~MwcwgDjO76pXCdjSVVQ88UHgMms8f4qHanDN0OzAJYqr~ijs8wErb-qtKy4VCeYrAi7UiPKrSKV0urT-3x0NG7o7Cg3-FjnLD6HBvKw9AC7xMrlXCzT~IlhIJcQDOK2ZEBDIU7qQav09MoJfbieZ6wIw__" alt="">
+              <div class="absolute top-5 inset-x-0 px-4">
+                <div class=" bg-black/20 py-2 px-4 rounded-3xl flex items-center justify-between mb-4">
+                  <p class="text-[white] font-bold text-base">Activar tarjeta</p>
+                  <button (click)="goAway()"  class="border-2 border-[white] rounded-md text-[white]">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+
+            <div class=" px-4">
+              <label for="number" class="block text-base font-bold  text-center">Escribe el BIM de tu tarjeta</label>
+              <div class="mt-2 mb-4">
+                <input [ngClass]="isDarkBoolean ? 'bg-gray-950 text-white' : 'bg-gray-100 text-[#455073]'"  [(ngModel)]="bimCode" type="number" name="number" id="number" class="block w-full rounded-3xl  px-3 py-1.5 text-base   focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm" placeholder="0">
+              </div>
+              <button (click)="activate()" class="btn-primary mb-3 cursor-pointer" >Activar tarjeta</button>
+            </div>
+
+      </div>
+    </div>
+  </div>
+</div>

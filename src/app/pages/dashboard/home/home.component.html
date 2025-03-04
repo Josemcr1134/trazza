@@ -42,7 +42,7 @@
               </div>
               <p class="text-sm text-white text-start font-normal">{{currentUser.cards[0].cvc }}</p>
             </div>
-            <div class="flex justify-between flex-wrap w-full items-center gap-x-3">
+            <div *ngIf="currentUser.cards[0].activated" class="flex justify-between flex-wrap w-full items-center gap-x-3">
               <a (click)="showCardData('physical')"  class="text-white text-sm font-medium flex items-center gap-x-2 cursor-pointer">
                 Ver datos
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
@@ -63,7 +63,10 @@
                   <img src="assets/icons/freeze.png" class="w-full h-auto" alt="">
                 </button>
               </div>
-          </div>
+            </div>
+            <div *ngIf="!currentUser.cards[0].activated" class="flex justify-between md:w-1/2 flex-wrap w-full items-center gap-x-3">
+                <button (click)="handleActivateCard(currentUser.cards[0].id)" class="btn-primary">Activar tarjeta</button>
+            </div>
         </div>
         </div>
       </div>
@@ -160,3 +163,4 @@
 <app-add-balance [cardBalance]="cardBalanceSelected" [cardId]="cardIdSelected" [cardType]="cardTypeSelected" *ngIf="showLoadBalanceModal" (close)="refresh($event)"></app-add-balance>
 
 <app-transfer-balance  [cardBalance]="cardBalanceSelected" [cardId]="cardIdSelected" *ngIf="showTransferBalanceModal" (close)="refresh($event)"  ></app-transfer-balance>
+<app-activate-card *ngIf="showCardActivateModal" [cardId]="cardIdSelected" (close)="refresh($event)" ></app-activate-card>

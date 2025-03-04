@@ -6,6 +6,7 @@ import { AddBalanceComponent } from '../../../shared/add-balance/add-balance.com
 import { TransferBalanceComponent } from '../../../shared/transfer-balance/transfer-balance.component';
 import Swal from 'sweetalert2';
 import { ThemeService } from '../../../core/services/theme.service';
+import { ActivateCardComponent } from '../../../shared/activate-card/activate-card.component';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ import { ThemeService } from '../../../core/services/theme.service';
   imports: [
     CommonModule,
     AddBalanceComponent,
-    TransferBalanceComponent
+    TransferBalanceComponent,
+    ActivateCardComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -48,6 +50,7 @@ export class HomeComponent {
   } ;
 
   public isDarkMode:boolean = false;
+  public showCardActivateModal:boolean = false;
   constructor(private userService: AuthService, private themeSvc:ThemeService) {
     this.themeSvc.isDarkMode$.subscribe((isDark:any) => {
       this.isDarkMode = isDark;
@@ -155,6 +158,12 @@ export class HomeComponent {
       }
       this.isLoading = false;
     }
+  };
+
+
+  handleActivateCard(cardId:string){
+    this.cardIdSelected = cardId;
+    this.showCardActivateModal = true;
   };
 
 }

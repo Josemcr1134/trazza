@@ -5,6 +5,7 @@ import { Transaction, User } from '../../../core/interfaces/user.interface';
 import { AuthService } from '../../../core/services/auth.service';
 import { TransferBalanceComponent } from '../../../shared/transfer-balance/transfer-balance.component';
 import Swal from 'sweetalert2';
+import { ActivateCardComponent } from '../../../shared/activate-card/activate-card.component';
 
 @Component({
   selector: 'app-card-center',
@@ -13,7 +14,8 @@ import Swal from 'sweetalert2';
 
     CommonModule,
     AddBalanceComponent,
-    TransferBalanceComponent
+    TransferBalanceComponent,
+    ActivateCardComponent
   ],
   templateUrl: './card-center.component.html',
   styleUrl: './card-center.component.css'
@@ -26,32 +28,9 @@ export class CardCenterComponent {
   public cardBalanceSelected:number = 0;
   public cardSelected:string = '';
   public showCardInfo:boolean = false;
+  public showCardActivateModal:boolean = false;
   public transactions:Transaction[] = [];
-  refresh(event:any){
-    this.showLoadBalanceModal = false;
-    this.showTransferBalanceModal = false;
-    this.currentUser = this.userService.getCurrentUser() ||  {
-      email: '',
-      password: '',
-      fullName: '',
-      address: '',
-      phone: '',
-      country: '',
-      cards: [],
-      transactions: [],
-      wallet: {
-        name:'',
-        id:'',
-        balance:0
-      },
-      role:2,
-      registrationDate:'',
-      isBlocked: false
 
-    } ;
-
-    this.transactions = this.currentUser.transactions.filter( ct => ct.cardId !== 'WALLET');
-  }
 
   currentUser: User = {
     email: '',
@@ -75,7 +54,6 @@ export class CardCenterComponent {
   public isLoading:boolean = false;
   constructor(private userService: AuthService) {
     this.refresh(true)
-    console.log(this.currentUser)
   }
 
   chooseCard(id:string, type:string, balance:number, isRecharge:boolean){
@@ -123,4 +101,36 @@ export class CardCenterComponent {
       this.isLoading = false;
     }
   };
+
+  handleActivateCard(cardId:string){
+    this.cardIdSelected = cardId;
+    this.showCardActivateModal = true;
+  };
+
+  refresh(event:any){
+    this.showLoadBalanceModal = false;
+    this.showTransferBalanceModal = false;
+    this.showCardActivateModal = false;
+    this.currentUser = this.userService.getCurrentUser() ||  {
+      email: '',
+      password: '',
+      fullName: '',
+      address: '',
+      phone: '',
+      country: '',
+      cards: [],
+      transactions: [],
+      wallet: {
+        name:'',
+        id:'',
+        balance:0
+      },
+      role:2,
+      registrationDate:'',
+      isBlocked: false
+
+    } ;
+
+    this.transactions = this.currentUser.transactions.filter( ct => ct.cardId !== 'WALLET');
+  }
 }
