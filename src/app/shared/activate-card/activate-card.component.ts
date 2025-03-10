@@ -35,6 +35,7 @@ export class ActivateCardComponent {
     if (this.bimCode == '0000') {
       if (this.userService.activateCard(this.user?.email || '', this.cardId)) {
         Swal.fire('', 'Tarjeta activada', 'success');
+
         this.goAway();
       } else {
         Swal.fire('', 'No pudmimos activar tu tarjeta', 'error')

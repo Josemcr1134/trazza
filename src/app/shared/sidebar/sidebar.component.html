@@ -2,8 +2,8 @@
   <!-- Sidebar component, swap this element with another sidebar if you like -->
   <div [ngClass]="isDarkMode ? 'bg-[#181818] text-white' : 'bg-white text-[#455073]'" class="flex grow flex-col gap-y-5 overflow-y-auto   py-8 sidebar" >
     <div class="px-5">
-      <div class="flex h-16 shrink-0 mb-7 items-center justify-center">
-        <img class="h-12 object-contain w-20" src="assets/images/logo-black.png" alt="Your Company">
+      <div class="flex shrink-0 mb-14 items-center justify-center">
+        <img class="h-5 object-contain w-40" [src]="isDarkMode ? 'assets/images/logo.png': 'assets/images/logo-black.png'" alt="Your Company">
       </div>
       <div class="profile-wrapper  grid grid-cols-3 mb-10">
         <div>
